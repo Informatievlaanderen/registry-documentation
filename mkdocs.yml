@@ -1,0 +1,38 @@
+site_name: Basisregisters Vlaanderen
+site_description: 'Documentation on how to get started building your own base registry.'
+site_author: 'agentschap Informatie Vlaanderen'
+copyright: 'Copyright (c) agentschap Informatie Vlaanderen'
+
+repo_url: https://github.com/informatievlaanderen/registry-documentation/
+repo_name: 'registry-documentation'
+remote_branch: 'gh-pages'
+remote_name: 'origin'
+
+theme:
+  name: material
+  favicon: 'img/favicon.ico'
+  # logo: 'img/favicon-194x194.png'
+  logo:
+    icon: 'library_books'
+  palette:
+    primary: 'yellow'
+    accent: 'yellow'
+  font:
+    text: 'Ubuntu'
+    code: 'Ubuntu Mono'
+
+docs_dir: 'docs'
+site_dir: 'site'
+
+use_directory_urls: true
+
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
+
+nav:
+    - 'Home': 'index.md'
+    - 'Build Script': 'build.md'
