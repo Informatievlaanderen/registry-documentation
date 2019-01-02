@@ -21,6 +21,9 @@ theme:
     text: 'Ubuntu'
     code: 'Ubuntu Mono'
 
+extra_css:
+  - 'stylesheets/extra.css'
+
 docs_dir: 'docs'
 site_dir: 'site'
 
