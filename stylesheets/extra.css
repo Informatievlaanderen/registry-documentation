@@ -1,0 +1,23 @@
+[data-md-color-primary=yellow] .md-header,
+[data-md-color-primary=yellow] .md-header a {
+    background-color: #FFE615;
+    color: #333332;
+}
+
+.md-search__input::placeholder, .md-search__input~.md-search__icon {
+    color:#333332;
+}
+
+[data-md-color-primary=yellow] .md-nav__link--active, [data-md-color-primary=yellow] .md-nav__link:active,
+[data-md-color-primary=yellow] .md-typeset a,
+a {
+    color: #06c;
+    text-decoration: none;
+}
+
+[data-md-color-accent=yellow] .md-nav__link:focus, [data-md-color-accent=yellow] .md-nav__link:hover,
+[data-md-color-accent=yellow] .md-typeset a:active, [data-md-color-accent=yellow] .md-typeset a:hover,
+a:hover {
+    color: #3184d6;
+    text-decoration: underline;
+}
