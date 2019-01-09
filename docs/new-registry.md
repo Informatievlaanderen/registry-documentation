@@ -1,6 +1,6 @@
 # Starting a new registry
 
-To get started building a new registry, you can follow these steps:
+To get started building a new registry based of the [example registry](https://github.com/informatievlaanderen/example-registry), follow these steps:
 
 ## Preparing the example registry
 
@@ -23,6 +23,7 @@ Rename the following files to your project name:
 * `src\ExampleRegistry.Api`
 * `src\ExampleRegistry.Api\ExampleRegistry.Api.csproj`
 * `src\ExampleRegistry.Api\ExampleRegistry.Api.csproj.DotSettings`
+* `src\ExampleRegistry.Api\Infrastructure\ExampleRegistryController.cs`
 
 * `src\ExampleRegistry.Infrastructure`
 * `src\ExampleRegistry.Infrastructure\ExampleRegistry.Infrastructure.csproj`
@@ -85,3 +86,5 @@ Set `YourRegistry.Api` as a startup project and select `YourRegistry.Api` as Deb
 Start the registry and browse to [localhost:1090](http://localhost:1090/), you should see the API documentation. Browsing to [localhost:1090/v1/example/SOMEKEY](http://localhost:1090/v1/example/SOMEKEY) should return `SOMEKEY`.
 
 At this point you have a working development environment to build upon.
+
+The next step is [to send commands to the domain](sending-commands.md).

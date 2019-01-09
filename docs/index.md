@@ -1,5 +1,13 @@
 # Welcome to Basisregisters Vlaanderen
 
+## Guides
+
+To get an idea on how our system works, we have written several guides documenting each step involved. It is advised you read these in order to get started:
+
+* [Starting a new registry](new-registry.md)
+* [Sending commands to the domain](sending-commands.md)
+* [Reacting to commands](reacting-to-commands.md)
+
 ## License
 
 [European Union Public Licence (EUPL)](https://joinup.ec.europa.eu/news/understanding-eupl-v12)
