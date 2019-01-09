@@ -75,3 +75,13 @@ If you wish to use `example.pfx`, which is a self-signed certificate for `localh
 ### Building for the first time
 
 Run `build.sh Pack` to verify everything is correct. This will also pull down all required packages to later open the solution properly with Visual Studio.
+
+## Running the registry using Visual Studio
+
+To try out the registry for the first time, open up `YourRegistry.sln` in Visual Studio.
+
+Set `YourRegistry.Api` as a startup project and select `YourRegistry.Api` as Debug Emulator instead of `IIS Express`.
+
+Start the registry and browse to [localhost:1090](http://localhost:1090/), you should see the API documentation. Browsing to [localhost:1090/v1/example/SOMEKEY](http://localhost:1090/v1/example/SOMEKEY) should return `SOMEKEY`.
+
+At this point you have a working development environment to build upon.
