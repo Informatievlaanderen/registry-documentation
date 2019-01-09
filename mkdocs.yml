@@ -41,4 +41,5 @@ nav:
     - 'New Registry': 'new-registry.md'
     - 'Sending Commands': 'sending-commands.md'
     - 'Receiving Commands': 'reacting-to-commands.md'
+    - 'Storing Events': 'storing-events.md'
     - 'Build Script': 'build.md'

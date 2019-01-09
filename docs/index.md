@@ -7,6 +7,7 @@ To get an idea on how our system works, we have written several guides documenti
 * [Starting a new registry](new-registry.md)
 * [Sending commands to the domain](sending-commands.md)
 * [Reacting to commands](reacting-to-commands.md)
+* [Storing events using SqlStreamStore](storing-events.md)
 
 ## License
 

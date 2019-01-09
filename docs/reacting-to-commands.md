@@ -59,6 +59,8 @@ A handler also uses `For` to register for commands but it uses a `finalHandler` 
 
 For example, this handler looks up an aggregate based on an identifier and if it does not exist, creates the aggregate and adds it to the repository:
 
+_NOTE: At this point, this example will not work yet, since you have not set up [storing events](storing-events.md) yet._
+
 ```csharp
 public sealed class ExampleCommandHandlerModule : CommandHandlerModule
 {
@@ -108,3 +110,5 @@ public partial class Example : AggregateRootEntity
     }
 }
 ```
+
+The created events are then [stored using SqlStreamStore](storing-events.md).
