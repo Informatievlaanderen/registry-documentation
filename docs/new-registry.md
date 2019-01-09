@@ -71,3 +71,7 @@ Search for `[assembly: Guid` in every `AssemblyInfo.cs` and generate a new guid 
 In `src\ExampleRegistry.Api\Infrastructure\Program.cs` there is a `DevelopmentCertificate` property used to configure the SSL certificate.
 
 If you wish to use `example.pfx`, which is a self-signed certificate for `localhost`, use the password `example-registry!`
+
+### Building for the first time
+
+Run `build.sh Pack` to verify everything is correct. This will also pull down all required packages to later open the solution properly with Visual Studio.
