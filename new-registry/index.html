@@ -385,6 +385,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../sending-commands/" title="Sending Commands" class="md-nav__link">
+      Sending Commands
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
     <a href="../reacting-to-commands/" title="Receiving Commands" class="md-nav__link">
       Receiving Commands
     </a>
@@ -525,7 +537,7 @@
                 
                 
                 <h1 id="starting-a-new-registry">Starting a new registry<a class="headerlink" href="#starting-a-new-registry" title="Permanent link">&para;</a></h1>
-<p>To get started building a new registry, you can follow these steps:</p>
+<p>To get started building a new registry based of the <a href="https://github.com/informatievlaanderen/example-registry">example registry</a>, follow these steps:</p>
 <h2 id="preparing-the-example-registry">Preparing the example registry<a class="headerlink" href="#preparing-the-example-registry" title="Permanent link">&para;</a></h2>
 <h3 id="downloading-the-example-registry">Downloading the example registry<a class="headerlink" href="#downloading-the-example-registry" title="Permanent link">&para;</a></h3>
 <p>Start by <a href="https://github.com/informatievlaanderen/example-registry/archive/master.zip">downloading the example registry</a> and extracting it in your new location.</p>
@@ -548,8 +560,9 @@
 <p><code>src\ExampleRegistry.Api</code></p>
 </li>
 <li><code>src\ExampleRegistry.Api\ExampleRegistry.Api.csproj</code></li>
+<li><code>src\ExampleRegistry.Api\ExampleRegistry.Api.csproj.DotSettings</code></li>
 <li>
-<p><code>src\ExampleRegistry.Api\ExampleRegistry.Api.csproj.DotSettings</code></p>
+<p><code>src\ExampleRegistry.Api\Infrastructure\ExampleRegistryController.cs</code></p>
 </li>
 <li>
 <p><code>src\ExampleRegistry.Infrastructure</code></p>
@@ -610,6 +623,7 @@
 <p>Set <code>YourRegistry.Api</code> as a startup project and select <code>YourRegistry.Api</code> as Debug Emulator instead of <code>IIS Express</code>.</p>
 <p>Start the registry and browse to <a href="http://localhost:1090/">localhost:1090</a>, you should see the API documentation. Browsing to <a href="http://localhost:1090/v1/example/SOMEKEY">localhost:1090/v1/example/SOMEKEY</a> should return <code>SOMEKEY</code>.</p>
 <p>At this point you have a working development environment to build upon.</p>
+<p>The next step is <a href="../sending-commands/">to send commands to the domain</a>.</p>
                 
                   
                 
@@ -645,13 +659,13 @@
           </a>
         
         
-          <a href="../reacting-to-commands/" title="Receiving Commands" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../sending-commands/" title="Sending Commands" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Receiving Commands
+                Sending Commands
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
