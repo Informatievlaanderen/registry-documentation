@@ -349,8 +349,22 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#building-for-the-first-time" title="Building for the first time" class="md-nav__link">
+    Building for the first time
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-registry-using-visual-studio" title="Running the registry using Visual Studio" class="md-nav__link">
+    Running the registry using Visual Studio
+  </a>
   
 </li>
       
@@ -460,8 +474,22 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#building-for-the-first-time" title="Building for the first time" class="md-nav__link">
+    Building for the first time
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-registry-using-visual-studio" title="Running the registry using Visual Studio" class="md-nav__link">
+    Running the registry using Visual Studio
+  </a>
   
 </li>
       
@@ -563,6 +591,13 @@
 <h3 id="enabling-https-with-a-certificate">Enabling HTTPS with a certificate<a class="headerlink" href="#enabling-https-with-a-certificate" title="Permanent link">&para;</a></h3>
 <p>In <code>src\ExampleRegistry.Api\Infrastructure\Program.cs</code> there is a <code>DevelopmentCertificate</code> property used to configure the SSL certificate.</p>
 <p>If you wish to use <code>example.pfx</code>, which is a self-signed certificate for <code>localhost</code>, use the password <code>example-registry!</code></p>
+<h3 id="building-for-the-first-time">Building for the first time<a class="headerlink" href="#building-for-the-first-time" title="Permanent link">&para;</a></h3>
+<p>Run <code>build.sh Pack</code> to verify everything is correct. This will also pull down all required packages to later open the solution properly with Visual Studio.</p>
+<h2 id="running-the-registry-using-visual-studio">Running the registry using Visual Studio<a class="headerlink" href="#running-the-registry-using-visual-studio" title="Permanent link">&para;</a></h2>
+<p>To try out the registry for the first time, open up <code>YourRegistry.sln</code> in Visual Studio.</p>
+<p>Set <code>YourRegistry.Api</code> as a startup project and select <code>YourRegistry.Api</code> as Debug Emulator instead of <code>IIS Express</code>.</p>
+<p>Start the registry and browse to <a href="http://localhost:1090/">localhost:1090</a>, you should see the API documentation. Browsing to <a href="http://localhost:1090/v1/example/SOMEKEY">localhost:1090/v1/example/SOMEKEY</a> should return <code>SOMEKEY</code>.</p>
+<p>At this point you have a working development environment to build upon.</p>
                 
                   
                 
