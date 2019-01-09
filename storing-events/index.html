@@ -40,7 +40,7 @@
     
     
       
-        <title>Sending Commands - Basisregisters Vlaanderen</title>
+        <title>Storing Events - Basisregisters Vlaanderen</title>
       
     
     
@@ -105,7 +105,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#sending-commands-to-the-domain" tabindex="1" class="md-skip">
+      <a href="#storing-events-using-sqlstreamstore" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -131,7 +131,7 @@
                 Basisregisters Vlaanderen
               </span>
               <span class="md-header-nav__topic">
-                Sending Commands
+                Storing Events
               </span>
             
           
@@ -270,20 +270,11 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-    <a href="./" title="Sending Commands" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../sending-commands/" title="Sending Commands" class="md-nav__link">
       Sending Commands
     </a>
-    
   </li>
 
     
@@ -303,11 +294,63 @@
       
       
 
+  
 
-  <li class="md-nav__item">
-    <a href="../storing-events/" title="Storing Events" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Storing Events
+      </label>
+    
+    <a href="./" title="Storing Events" class="md-nav__link md-nav__link--active">
       Storing Events
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creating-the-database" title="Creating the database" class="md-nav__link">
+    Creating the database
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-the-application" title="Configuring the application" class="md-nav__link">
+    Configuring the application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-sqlstreamstore" title="Configuring SqlStreamStore" class="md-nav__link">
+    Configuring SqlStreamStore
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
     
@@ -340,6 +383,36 @@
     
   
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creating-the-database" title="Creating the database" class="md-nav__link">
+    Creating the database
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-the-application" title="Configuring the application" class="md-nav__link">
+    Configuring the application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-sqlstreamstore" title="Configuring SqlStreamStore" class="md-nav__link">
+    Configuring SqlStreamStore
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -350,79 +423,49 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/informatievlaanderen/registry-documentation/edit/master/docs/sending-commands.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/informatievlaanderen/registry-documentation/edit/master/docs/storing-events.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="sending-commands-to-the-domain">Sending commands to the domain<a class="headerlink" href="#sending-commands-to-the-domain" title="Permanent link">&para;</a></h1>
-<p>A system can receive input from various sources. Eventually all of these need to get translated into commands which are sent to the domain. The way these commands are created is up to the implementor.</p>
-<p>Commands in their turn are sent to the domain by dispatching them on a bus. In its simplest form, a command is sent over the bus using <code>bus.Dispatch(commandId, command)</code> towards the domain.</p>
-<p>In this example, we have an MVC controller where incoming commands are sent to as plain JSON objects for simplicity, converted into a command object and placed on the bus.</p>
-<div class="codehilite"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">CommandRequest</span>
-<span class="p">{</span>
-    <span class="c1">/// &lt;summary&gt;Type of the command.&lt;/summary&gt;</span>
-<span class="na">    [Required]</span>
-    <span class="k">public</span> <span class="kt">string</span> <span class="n">Type</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+                <h1 id="storing-events-using-sqlstreamstore">Storing events using SqlStreamStore<a class="headerlink" href="#storing-events-using-sqlstreamstore" title="Permanent link">&para;</a></h1>
+<p>Events are stored in Microsoft SQL Server using SqlStreamStore.</p>
+<h2 id="creating-the-database">Creating the database<a class="headerlink" href="#creating-the-database" title="Permanent link">&para;</a></h2>
+<p>Create a new database in Microsoft SQL Server:</p>
+<div class="codehilite"><pre><span></span><span class="k">IF</span> <span class="n">DB_ID</span><span class="p">(</span><span class="n">N</span><span class="s1">&#39;your-registry&#39;</span><span class="p">)</span> <span class="k">IS</span> <span class="k">NULL</span> <span class="k">EXEC</span><span class="p">(</span><span class="n">N</span><span class="s1">&#39;CREATE DATABASE [your-registry];&#39;</span><span class="p">);</span>
+<span class="k">GO</span>
 
-    <span class="c1">/// &lt;summary&gt;The raw command.&lt;/summary&gt;</span>
-<span class="na">    [Required]</span>
-    <span class="k">public</span> <span class="kt">string</span> <span class="n">Command</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-<span class="p">}</span>
+<span class="k">IF</span> <span class="n">SERVERPROPERTY</span><span class="p">(</span><span class="s1">&#39;EngineEdition&#39;</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="mi">5</span> <span class="k">EXEC</span><span class="p">(</span><span class="n">N</span><span class="s1">&#39;ALTER DATABASE [your-registry] SET READ_COMMITTED_SNAPSHOT ON;&#39;</span><span class="p">);</span>
+<span class="k">GO</span>
 
-<span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">CommandRequestMapping</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="k">static</span> <span class="kt">dynamic</span> <span class="nf">Map</span><span class="p">(</span><span class="n">CommandRequest</span> <span class="n">message</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="kt">var</span> <span class="n">assembly</span> <span class="p">=</span> <span class="k">typeof</span><span class="p">(</span><span class="n">DomainAssemblyMarker</span><span class="p">).</span><span class="n">Assembly</span><span class="p">;</span>
-        <span class="kt">var</span> <span class="n">type</span> <span class="p">=</span> <span class="n">assembly</span><span class="p">.</span><span class="n">GetType</span><span class="p">(</span><span class="n">message</span><span class="p">.</span><span class="n">Type</span><span class="p">);</span>
+<span class="n">USE</span> <span class="p">[</span><span class="n">your</span><span class="o">-</span><span class="n">registry</span><span class="p">]</span>
+<span class="k">GO</span>
 
-        <span class="k">return</span> <span class="n">JsonConvert</span><span class="p">.</span><span class="n">DeserializeObject</span><span class="p">(</span><span class="n">message</span><span class="p">.</span><span class="n">Command</span><span class="p">,</span> <span class="n">type</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="k">IF</span> <span class="n">SCHEMA_ID</span><span class="p">(</span><span class="n">N</span><span class="s1">&#39;YourRegistry&#39;</span><span class="p">)</span> <span class="k">IS</span> <span class="k">NULL</span> <span class="k">EXEC</span><span class="p">(</span><span class="n">N</span><span class="s1">&#39;CREATE SCHEMA [YourRegistry];&#39;</span><span class="p">);</span>
+<span class="k">GO</span>
+</pre></div>
 
-<span class="k">public</span> <span class="k">class</span> <span class="nc">ExampleController</span> <span class="p">:</span> <span class="n">ExampleRegistryController</span>
-<span class="p">{</span>
-    <span class="c1">/// &lt;summary&gt;</span>
-    <span class="c1">/// Execute a generic command.</span>
-    <span class="c1">/// &lt;/summary&gt;</span>
-    <span class="c1">/// &lt;param name=&quot;bus&quot;&gt;&lt;/param&gt;</span>
-    <span class="c1">/// &lt;param name=&quot;commandId&quot;&gt;Optional unique id for the request.&lt;/param&gt;</span>
-    <span class="c1">/// &lt;param name=&quot;command&quot;&gt;&lt;/param&gt;</span>
-    <span class="c1">/// &lt;param name=&quot;cancellationToken&quot;&gt;&lt;/param&gt;</span>
-    <span class="c1">/// &lt;response code=&quot;202&quot;&gt;If the request is accepted.&lt;/response&gt;</span>
-    <span class="c1">/// &lt;response code=&quot;400&quot;&gt;If the request has invalid data.&lt;/response&gt;</span>
-    <span class="c1">/// &lt;response code=&quot;500&quot;&gt;If an internal error has occured.&lt;/response&gt;</span>
-    <span class="c1">/// &lt;returns&gt;&lt;/returns&gt;</span>
-<span class="na">    [HttpPost]</span>
-<span class="na">    [ProducesResponseType(typeof(void), StatusCodes.Status202Accepted)]</span>
-<span class="na">    [ProducesResponseType(typeof(BasicApiProblem), StatusCodes.Status400BadRequest)]</span>
-<span class="na">    [ProducesResponseType(typeof(BasicApiProblem), StatusCodes.Status500InternalServerError)]</span>
-<span class="na">    [SwaggerRequestExample(typeof(CommandRequest), typeof(CommandRequestExample))]</span>
-<span class="na">    [SwaggerResponseExample(StatusCodes.Status202Accepted, typeof(CommandResponseExamples), jsonConverter: typeof(StringEnumConverter))]</span>
-<span class="na">    [SwaggerResponseExample(StatusCodes.Status400BadRequest, typeof(BadRequestResponseExamples), jsonConverter: typeof(StringEnumConverter))]</span>
-<span class="na">    [SwaggerResponseExample(StatusCodes.Status500InternalServerError, typeof(InternalServerErrorResponseExamples), jsonConverter: typeof(StringEnumConverter))]</span>
-    <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="n">Post</span><span class="p">(</span>
-<span class="na">        [FromServices]</span> <span class="n">ICommandHandlerResolver</span> <span class="n">bus</span><span class="p">,</span>
-<span class="na">        [FromCommandId]</span> <span class="n">Guid</span> <span class="n">commandId</span><span class="p">,</span>
-<span class="na">        [FromBody]</span> <span class="n">CommandRequest</span> <span class="n">command</span><span class="p">,</span>
-        <span class="n">CancellationToken</span> <span class="n">cancellationToken</span> <span class="p">=</span> <span class="k">default</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(!</span><span class="n">ModelState</span><span class="p">.</span><span class="n">IsValid</span><span class="p">)</span>
-            <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">(</span><span class="n">ModelState</span><span class="p">);</span>
 
-        <span class="c1">// Normally this would be bus.Dispatch(...) but because of the example the command to dispatch is of type &#39;dynamic&#39; which an extension method cannot handle.</span>
-        <span class="k">return</span> <span class="nf">Accepted</span><span class="p">(</span>
-            <span class="k">await</span> <span class="n">CommandHandlerResolverExtensions</span><span class="p">.</span><span class="n">Dispatch</span><span class="p">(</span>
-                <span class="n">bus</span><span class="p">,</span>
-                <span class="n">commandId</span><span class="p">,</span>
-                <span class="n">CommandRequestMapping</span><span class="p">.</span><span class="n">Map</span><span class="p">(</span><span class="n">command</span><span class="p">),</span>
-                <span class="n">GetMetadata</span><span class="p">(),</span>
-                <span class="n">cancellationToken</span><span class="p">));</span>
-    <span class="p">}</span>
+<h2 id="configuring-the-application">Configuring the application<a class="headerlink" href="#configuring-the-application" title="Permanent link">&para;</a></h2>
+<p>Next to the <code>appsettings.json</code> in <code>YourRegistry.Api</code>, create a new file called <code>appsettings.your-machine.json</code>, with your computername lower cased (e.g. <code>appsettings.boxy.json</code> when the computername is <code>Boxy</code>).</p>
+<p>This file will contain the connection string to your newly created database:</p>
+<div class="codehilite"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;ConnectionStrings&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;Events&quot;</span><span class="p">:</span> <span class="s2">&quot;Server=.;Database=your-registry;Trusted_Connection=True;&quot;</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 
 
-<p>At this point you can focus on the domain and <a href="../reacting-to-commands/">start reacting to the received commands</a>.</p>
+<h2 id="configuring-sqlstreamstore">Configuring SqlStreamStore<a class="headerlink" href="#configuring-sqlstreamstore" title="Permanent link">&para;</a></h2>
+<p>In <code>src/YourRegistry.Api/Infrastructure/Startup.cs</code> uncomment the following to allow SqlStreamStore to check and configure the database:</p>
+<div class="codehilite"><pre><span></span><span class="n">StartupHelpers</span><span class="p">.</span><span class="n">EnsureSqlStreamStoreSchema</span><span class="p">&lt;</span><span class="n">Startup</span><span class="p">&gt;(</span><span class="n">streamStore</span><span class="p">,</span> <span class="n">loggerFactory</span><span class="p">);</span>
+</pre></div>
+
+
+<p>At this point when you run your Api and send the commands from <a href="../sending-commands/">previous chapter</a>:</p>
+<ul>
+<li>events are saved automatically;</li>
+<li>aggregates are fetched by identifier and have their state rebuild from existing events.</li>
+</ul>
                 
                   
                 
@@ -443,7 +486,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../new-registry/" title="New Registry" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../reacting-to-commands/" title="Receiving Commands" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -452,19 +495,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                New Registry
+                Receiving Commands
               </span>
             </div>
           </a>
         
         
-          <a href="../reacting-to-commands/" title="Receiving Commands" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../build/" title="Build Script" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Receiving Commands
+                Build Script
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

@@ -381,6 +381,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../storing-events/" title="Storing Events" class="md-nav__link">
+      Storing Events
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
     <a href="../build/" title="Build Script" class="md-nav__link">
       Build Script
     </a>
@@ -526,6 +538,7 @@
 <h3 id="implementation_1">Implementation<a class="headerlink" href="#implementation_1" title="Permanent link">&para;</a></h3>
 <p>A handler also uses <code>For</code> to register for commands but it uses a <code>finalHandler</code> to enable auto-saving of events.</p>
 <p>For example, this handler looks up an aggregate based on an identifier and if it does not exist, creates the aggregate and adds it to the repository:</p>
+<p><em>NOTE: At this point, this example will not work yet, since you have not set up <a href="../storing-events/">storing events</a> yet.</em></p>
 <div class="codehilite"><pre><span></span><span class="k">public</span> <span class="k">sealed</span> <span class="k">class</span> <span class="nc">ExampleCommandHandlerModule</span> <span class="p">:</span> <span class="n">CommandHandlerModule</span>
 <span class="p">{</span>
     <span class="k">public</span> <span class="nf">ExampleCommandHandlerModule</span><span class="p">(</span>
@@ -573,6 +586,9 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
+
+
+<p>The created events are then <a href="../storing-events/">stored using SqlStreamStore</a>.</p>
                 
                   
                 
@@ -608,13 +624,13 @@
           </a>
         
         
-          <a href="../build/" title="Build Script" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../storing-events/" title="Storing Events" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Build Script
+                Storing Events
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
