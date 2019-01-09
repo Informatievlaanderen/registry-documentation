@@ -39,4 +39,5 @@ markdown_extensions:
 nav:
     - 'Home': 'index.md'
     - 'New Registry': 'new-registry.md'
+    - 'Receiving Commands': 'reacting-to-commands.md'
     - 'Build Script': 'build.md'
