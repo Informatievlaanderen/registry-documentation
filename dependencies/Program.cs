@@ -18,7 +18,16 @@ namespace Dependencies
         DeterministicGuidGenerator,
         VersionHeaderMiddleware,
         ToStringBuilder,
-        TimestampJsonConverter
+        TimestampJsonConverter,
+        ResponseCorrelationIdMiddleware,
+        RemoteIpAddressMiddleware,
+        LogContextCorrelationIdMiddleware,
+        TrimStringJsonConverter,
+        JsonSerializerSettings,
+        HexByteConverter,
+        EventHandling,
+        EntityFrameworkEntityConfiguration,
+        CsvFormatter,
     }
 
     public class LibraryComponent
@@ -97,6 +106,78 @@ namespace Dependencies
                     Library.TimestampJsonConverter,
                     "timestamp-jsonconverter",
                     "JSON.NET converter for parsing timestamps in Zulu time.")
+            },
+
+            {
+                Library.ResponseCorrelationIdMiddleware,
+                new LibraryComponent(
+                    Library.ResponseCorrelationIdMiddleware,
+                    "response-correlationid-middleware",
+                    "ASP.NET Core MVC Middleware to add an 'x-correlation-id' header to all responses.")
+            },
+
+            {
+                Library.RemoteIpAddressMiddleware,
+                new LibraryComponent(
+                    Library.RemoteIpAddressMiddleware,
+                    "remote-ipaddress-middleware",
+                    "Middleware component which adds a the remote IP id as a claim `urn:basisregisters:vlaanderen:ip` for the user on the request context.")
+            },
+
+            {
+                Library.LogContextCorrelationIdMiddleware,
+                new LibraryComponent(
+                    Library.LogContextCorrelationIdMiddleware,
+                    "logcontext-correlationid-middleware",
+                    "Middleware component which adds the correlation id to the Serilog LogContext.")
+            },
+
+            {
+                Library.TrimStringJsonConverter,
+                new LibraryComponent(
+                    Library.TrimStringJsonConverter,
+                    "trim-string-jsonconverter",
+                    "JSON.NET converter for trimming and removing duplicate spaces in strings.")
+            },
+
+            {
+                Library.JsonSerializerSettings,
+                new LibraryComponent(
+                    Library.JsonSerializerSettings,
+                    "json-serializer-settings",
+                    "Default Json.NET serializer settings.")
+            },
+
+            {
+                Library.HexByteConverter,
+                new LibraryComponent(
+                    Library.HexByteConverter,
+                    "hexbyte-converter",
+                    "Easily convert between byte array and hex strings.")
+            },
+
+            {
+                Library.EventHandling,
+                new LibraryComponent(
+                    Library.EventHandling,
+                    "event-handling",
+                    "Lightweight event handling infrastructure.")
+            },
+
+            {
+                Library.EntityFrameworkEntityConfiguration,
+                new LibraryComponent(
+                    Library.EntityFrameworkEntityConfiguration,
+                    "ef-entity-configuration",
+                    "Auto discover IEntityTypeConfiguration classes.")
+            },
+
+            {
+                Library.CsvFormatter,
+                new LibraryComponent(
+                    Library.CsvFormatter,
+                    "csv-formatter",
+                    "ASP.NET Core MVC CSV formatter.")
             }
         };
 
@@ -140,6 +221,37 @@ namespace Dependencies
                 .Uses(Libraries[Library.BuildPipeline].Container, Uses);
 
             Libraries[Library.TimestampJsonConverter].Container
+                .Uses(Libraries[Library.BuildPipeline].Container, Uses);
+
+            Libraries[Library.ResponseCorrelationIdMiddleware].Container
+                .Uses(Libraries[Library.BuildPipeline].Container, Uses);
+
+            Libraries[Library.RemoteIpAddressMiddleware].Container
+                .Uses(Libraries[Library.BuildPipeline].Container, Uses);
+
+            Libraries[Library.LogContextCorrelationIdMiddleware].Container
+                .Uses(Libraries[Library.BuildPipeline].Container, Uses);
+
+            Libraries[Library.TrimStringJsonConverter].Container
+                .Uses(Libraries[Library.BuildPipeline].Container, Uses);
+
+            Libraries[Library.JsonSerializerSettings].Container
+                .Uses(Libraries[Library.BuildPipeline].Container, Uses);
+            Libraries[Library.JsonSerializerSettings].Container
+                .Uses(Libraries[Library.TrimStringJsonConverter].Container, Uses);
+
+            Libraries[Library.HexByteConverter].Container
+                .Uses(Libraries[Library.BuildPipeline].Container, Uses);
+
+            Libraries[Library.EventHandling].Container
+                .Uses(Libraries[Library.BuildPipeline].Container, Uses);
+            Libraries[Library.EventHandling].Container
+                .Uses(Libraries[Library.TrimStringJsonConverter].Container, Uses);
+
+            Libraries[Library.EntityFrameworkEntityConfiguration].Container
+                .Uses(Libraries[Library.BuildPipeline].Container, Uses);
+
+            Libraries[Library.CsvFormatter].Container
                 .Uses(Libraries[Library.BuildPipeline].Container, Uses);
 
             var views = workspace.Views;
@@ -217,7 +329,7 @@ namespace Dependencies
             styles.Add(new RelationshipStyle(Tags.Asynchronous) { Dashed = true });
             styles.Add(new RelationshipStyle(Tags.Synchronous) { Dashed = false });
 
-            styles.Add(new RelationshipStyle(Tags.Relationship) { Routing = Routing.Orthogonal });
+            //styles.Add(new RelationshipStyle(Tags.Relationship) { Routing = Routing.Orthogonal });
         }
 
         private static void UploadWorkspaceToStructurizr(Workspace workspace)
