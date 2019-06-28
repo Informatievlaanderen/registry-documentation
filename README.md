@@ -1,6 +1,12 @@
 # Documentation
 
+## General
+
+* [Release-1.0-(Date-TBD)](https://github.com/Informatievlaanderen/registry-documentation/wiki/Release 1.0 (Date-TBD))
+
 ## Generating
+
+To generate the documentation site, you can use the following commands:
 
 ```bash
 pip install mkdocs
