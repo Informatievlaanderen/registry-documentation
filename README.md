@@ -2,7 +2,7 @@
 
 ## General
 
-* [Release-1.0-(Date-TBD)](https://github.com/Informatievlaanderen/registry-documentation/wiki/Release 1.0 (Date-TBD))
+* [Release 1.0 (Date-TBD)](https://github.com/Informatievlaanderen/registry-documentation/wiki/Release-1.0-(Date-TBD))
 
 ## Generating
 
